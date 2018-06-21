@@ -165,7 +165,7 @@ function getTransaction() {
     // 8-Importe:00000000000350//14 posiciciones
 	var entero=res.substring(index, index + 12);
 	var decimal=res.substring(index+12, index + 14);
-	if(transacciones[i][7]==1){
+	if(transacciones[i][7]==1){//si es un cobro o un pago
 		correcto="-"+entero+"."+decimal;
 	}
 	else{
@@ -180,6 +180,29 @@ function getTransaction() {
     index += 10;
     // 10-Referencia_1:LIQUID.ABONO//12 posiciciones
     transacciones[i][10] = res.substring(index, index + 12);
+	/*CATEGORIZACIÓN*/
+	if(transacciones[i][10].search("IMPUESTO")>0){
+		/*pongo que está en la categoría impuesto*/
+	}
+	else if(transacciones[i][10].search("NÓMINA")>0){
+		/*pongo que está en la categoría nómina*/
+	}
+	else if(transacciones[i][10].search("GASTOS")>0){
+		/*pongo que está en la categoría de gastos*/
+	}
+	else if(transacciones[i][10].search("COMISIÓN")>0){
+		/*pongo que está en la categoría de comisión*/
+	}
+	else if(transacciones[i][10].search("RECIBO")>0){
+		/*se hace no se que*/
+	}
+	else if(transacciones[i][10].search("BONO")>0){
+		transacciones[i][30]="ABONADO";
+		console.log(transacciones[i][10]);//por algun motivo la primera letra no la encuentra, si pongo ABONO es como si la A no la detecta
+	}
+	else{
+		transacciones[i][30]="SIN CATEGORÍA";
+	}
     index += 12;
     // 11-Referencia_2: COM            //16 posiciciones
     transacciones[i][11] = res.substring(index, index + 16);
@@ -319,7 +342,7 @@ function getTransaction() {
     HTMLFila += `<td>${fila[3]}</td>`
 	HTMLFila += `<td>${fila[4]}</td>`
 	HTMLFila += `<td>${fila[8]}</td>`
-	HTMLFila += `<td>${fila[2]}</td>`
+	HTMLFila += `<td>${fila[30]}</td>`
 	HTMLFila += `<td>${fila[10]}</td>`
 	HTMLFila += `<td>${fila[11]}</td>`
     HTMLFila += '</tr>\n'
