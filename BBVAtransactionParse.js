@@ -165,11 +165,13 @@ function getTransaction() {
     // 8-Importe:00000000000350//14 posiciciones
 	var entero=res.substring(index, index + 12);
 	var decimal=res.substring(index+12, index + 14);
+	/*quitar ceros de la izquierda*/
+	entero=parseFloat(entero).toFixed (0);
 	if(transacciones[i][7]==1){//si es un cobro o un pago
-		correcto="-"+entero+"."+decimal;
+		correcto="-"+entero+"."+decimal+"€";
 	}
 	else{
-		correcto="+"+entero+"."+decimal;
+		correcto="+"+entero+"."+decimal+"€";
 	}
 	
 	transacciones[i][8]=correcto;
@@ -181,22 +183,22 @@ function getTransaction() {
     // 10-Referencia_1:LIQUID.ABONO//12 posiciciones
     transacciones[i][10] = res.substring(index, index + 12);
 	/*CATEGORIZACIÓN*/
-	if(transacciones[i][10].search("IMPUESTO")>0){
+	if(transacciones[i][10].search("IMPUESTO")!=-1){
 		/*pongo que está en la categoría impuesto*/
 	}
-	else if(transacciones[i][10].search("NÓMINA")>0){
+	else if(transacciones[i][10].search("NÓMINA")!=-1){
 		/*pongo que está en la categoría nómina*/
 	}
-	else if(transacciones[i][10].search("GASTOS")>0){
+	else if(transacciones[i][10].search("GASTOS")!=-1){
 		/*pongo que está en la categoría de gastos*/
 	}
-	else if(transacciones[i][10].search("COMISIÓN")>0){
+	else if(transacciones[i][10].search("COMISIÓN")!=-1){
 		/*pongo que está en la categoría de comisión*/
 	}
-	else if(transacciones[i][10].search("RECIBO")>0){
+	else if(transacciones[i][10].search("RECIBO")!=-1){
 		/*se hace no se que*/
-	}
-	else if(transacciones[i][10].search("BONO")>0){
+	}/*PRUEBA CON ABONO AUNQUE NO PERTENEZCA A LAS CATEGORIAS QUE NOS HAN DICHO*/
+	else if(transacciones[i][10].search("ABONO")!=-1){
 		transacciones[i][30]="ABONADO";
 		console.log(transacciones[i][10]);//por algun motivo la primera letra no la encuentra, si pongo ABONO es como si la A no la detecta
 	}
