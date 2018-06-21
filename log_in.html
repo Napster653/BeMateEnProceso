@@ -1,0 +1,27 @@
+<link rel="stylesheet" type="text/css" href="log_in_style.css" media="screen" />
+<link rel="SHORTCUT ICON" href="https://d1ewohb620cza6.cloudfront.net/user_s3_avatar_256x256/avatars/000/494/144/494144-original.png?1488372590">
+
+<title>Log In</title>
+<script type="text/javascript">
+var u;
+var p;
+function getUser(){
+	u=document.getElementById("usern").value;
+	p=document.getElementById("passw").value;
+}
+</script>
+<div class="login-card">
+	<div class="bematelogo">
+	<img src="https://en.bemate.com/propertymanagement/images/platform-logos/bemate_ok.png" >
+	</div>
+	<h4></h4><br>
+	<form>
+    <input type="text" name="user" id="usern" placeholder="ID" required/>
+    <input type="password" name="pass" id="passw" placeholder="Password" required/>
+    <input type="submit" name="login" class="login login-submit" onclick="javascript:window.location.href='chart.html'; return false;" value="Log in"/>
+	</form>
+	<!--empty div just in case we need it later-->
+	<div class="login-help">
+		<a href="#"><a href="#"></a>
+	</div>
+</div>
