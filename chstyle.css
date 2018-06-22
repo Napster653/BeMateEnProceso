@@ -1,20 +1,31 @@
 div.material-table {
   padding: 0;
 }
-div.material-table .hiddensearch {
-	
-  border-bottom: solid 1px #DDDDDD;
-  /* display: none; */
+div.material-table .dataTables_filter {
+margin:0;
+  width:100%;
+text-align:left;
+	float:left;
+	height:40px;
+	color: white;
+  margin-bottom:10px;
 }
 
-div.material-table .hiddensearch input {
+div.material-table .dataTables_filter input {
   margin: 0;
- padding-left:20px;
- border: transparent 0 !important;
+  height:100%;
   color:black;
-}
+  width:100%;
+  padding-top:10px;
+  padding-bottom:10px;
+  border-top: transparent 0 !important;
+  border-left: transparent 0 !important;
+  border-right: transparent 0 !important;
+  border-bottom:  solid 1px purple;
+  outline: 0;
+  }
 
-div.material-table .hiddensearch input:active {
+div.material-table .dataTables_filter input:active {
   border: transparent 0 !important;
 }
 
@@ -37,7 +48,7 @@ div.material-table .table-header {
 div.material-table .table-header .actions {
   display: -webkit-flex;
   margin-left: auto;
-  
+
 }
 
 div.material-table .table-header .btn-flat {
@@ -95,7 +106,7 @@ div.material-table .table-footer .select-wrapper {
   display: flex;
   -webkit-flex-direction: row
   /* works with row or column */
-  
+
   flex-direction: row;
   -webkit-align-items: center;
   align-items: center;
@@ -149,10 +160,11 @@ div.material-table .table-title {
 }
 
 div.material-table table tr td {
-  padding: 0 0 0 66px;
+  padding: 0 0 0 06px;
   height: 48px;
-  font-size: 18px;
+  font-size: 15px;
   font-family: Helvetica;
+  text-align: center;
   color: rgba(0, 0, 0, 0.87);
   border-bottom: solid 1px #DDDDDD;
   white-space: nowrap;
@@ -163,13 +175,13 @@ div.material-table table tr td {
 	display:none;
 }
 .dataTables_paginate{
-	display:none;
+	/* display:none; */
 }
 .dataTables_length{
-	display: none;
+	/* display: none; */
 }
 .dataTables_filter{
-	display: none;
+	/*display: none;*/
 }
 div.material-table table tr td a {
   color: inherit;
@@ -188,12 +200,13 @@ div.material-table table th {
   font-size: 18px;
   font-family: Helvetica;
   font-weight: 500;
+  text-align: center;
   color: #757575;
   cursor: pointer;
   white-space: nowrap;
   padding: 0;
   height: 56px;
-  padding-left: 66px;
+  padding-left: 06px;
   vertical-align: middle;
   outline: none !important;
 }
@@ -237,10 +250,10 @@ div.material-table table tbody tr:hover {
   background-color: #EEE;
 }
 
-/* div.material-table table th:first-child, */
-/* div.material-table table td:first-child { */
-  /* padding: 0 0 0 24px; */
-/* } */
+ div.material-table table th:first-child,
+ div.material-table table td:first-child {
+   padding: 0 0 0 24px;
+ } */
 
 div.material-table table th:last-child,
 div.material-table table td:last-child {

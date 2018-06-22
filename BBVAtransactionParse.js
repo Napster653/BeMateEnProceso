@@ -168,12 +168,11 @@ function getTransaction() {
 	/*quitar ceros de la izquierda*/
 	entero=parseFloat(entero).toFixed (0);
 	if(transacciones[i][7]==1){//si es un cobro o un pago
-		correcto="-"+entero+"."+decimal+"€";
+		correcto="-"+entero+"."+decimal+"&euro;";
 	}
 	else{
-		correcto="+"+entero+"."+decimal+"€";
+		correcto="+"+entero+"."+decimal+"&euro;";
 	}
-	
 	transacciones[i][8]=correcto;
     // transacciones[i][8] = res.substring(index, index + 14);
     index += 14;
@@ -203,7 +202,7 @@ function getTransaction() {
 		console.log(transacciones[i][10]);//por algun motivo la primera letra no la encuentra, si pongo ABONO es como si la A no la detecta
 	}
 	else{
-		transacciones[i][30]="SIN CATEGORÍA";
+		transacciones[i][30]="SIN CATEGOR&IacuteA";
 	}
     index += 12;
     // 11-Referencia_2: COM            //16 posiciciones
@@ -312,7 +311,7 @@ function getTransaction() {
   console.log(transacciones[6][8]);
   console.log(transacciones[6][11]);
   //fecha sin poner bien
-  
+
   //proceso para poner la fecha con el formato adecuado
   var ano = transacciones[2][3].substring(0, 2) + "/";
   var mes = transacciones[2][3].substring(2, 4) + "/";

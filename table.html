@@ -1,6 +1,8 @@
+<!DOCTYPE html>
+<html>
+<head>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css">
 <link rel="stylesheet" type="text/css" href="chstyle.css" media="screen" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <script src="BBVAtransactionParse.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
@@ -15,52 +17,80 @@
         } ],
         "order": [[ 2, 'asc' ]]		//decido cual empieza activada
     } );
- 
+
     t.on( 'order.dt search.dt', function () {
         t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) { //elijo en que columna meto el contador de filas
             cell.innerHTML = i+1; //+1 si empieza a contar en 1, +2 si empieza a contar en dos, etc
         } );
     } ).draw();
 } ); */
+
 $(document).ready(function() {
     // Setup - add a text input to each footer cell
-    <!-- $('#datatable tfoot th').each( function () { -->
-        <!-- var title = $(this).text(); -->
-        <!-- $(this).html( '<input type="text" placeholder="Search '+title+'" />' ); -->
-    <!-- } ); -->
- 
+    //  $('#datatable tfoot th').each( function () {
+    //      var title = $(this).text();
+    //      $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+    //  } );
+
     // DataTable
     var table = $('#datatable').DataTable({
-	"order": [[ 2, 'asc' ]]
+	"order" : [[ 2, 'asc' ]],
+	 "paging" :   false,
+	 "searching" : true,
+	     "oLanguage": {
+      "sStripClasses": "",
+      "sSearch": "",
+      "sSearchPlaceholder": "Busca aqu\u00ED...",
+    }
 	});
-	
+
+
+
+
+
+
+	//var t= $('#datatable').DataTable();
+	var counter = 1;
+	$('#addRow').on('click',function(){
+		table.row.add([
+			counter + '.1',
+			counter +'.2',
+            counter ,
+            counter ,
+            transacciones[1][2] ,
+			counter
+			]).draw(false);
+	});
+
+
     // Apply the search
-    <!-- table.columns().every( function () { -->
-        <!-- var that = this; -->
- 
-        <!-- $( 'input', this.footer() ).on( 'keyup change', function () { -->
-            <!-- if ( that.search() !== this.value ) { -->
-                <!-- that -->
-                    <!-- .search( this.value ) -->
-                    <!-- .draw(); -->
-            <!-- } -->
-        <!-- } ); -->
-    <!-- } ); -->
+     // table.columns().every( function () {
+     //     var that = this;
+     //
+     //     $( 'input', this.footer() ).on( 'keyup change', function () {
+     //         if ( that.search() !== this.value ) {
+     //             that
+     //                 .search( this.value )
+     //                 .draw();
+     //         }
+     //     } );
+     // } );
 } );
+
+
 </script>
 <title>My Transactions </title>
 </head>
-<body>
+<body onload="getTransaction()">
 <div class="row">
   <div id="admin" class="col s12">
     <div class="card material-table">
       <div class="table-header">
-		<img class="bmicon" title="Be Mate Transactions" style="height:50px;" src="https://es.bemate.com/gestionintegral/images/platform-logos/bemate_ok.png" onclick="getTransaction()">
+		<img class="bmicon" title="Be Mate Transactions" style="height:50px;" src="https://es.bemate.com/gestionintegral/images/platform-logos/bemate_ok.png" >
         <span class="table-title" style="font-family: helvetica">Transactions</span>
         <div class="actions">
 		  <a class="logout" onclick="window.location='log_in.html';">Logout</a>
         </div>
-		<a class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
       </div>
 		<table id="datatable" class="display" style="width:100%">
         <thead>
@@ -68,79 +98,17 @@ $(document).ready(function() {
             <th style="color: #967ADC">Fecha Op.</th>
             <th style="color: #967ADC">Fecha valor</th>
             <th style="color: #967ADC">Importe</th>
-            <th style="color: #967ADC">Categoría</th>
+            <th style="color: #967ADC">Categor&iacutea</th>
             <th style="color: #967ADC">Referencia 1</th>
-			<th style="color: #967ADC">Referencia 2</th>
+			      <th style="color: #967ADC">Referencia 2</th>
             </tr>
         </thead>
         <tbody id="cuerpo">
-            <tr>
-                <td>Jena Gaines</td>
-                <td>Office Manager</td>
-                <td>London</td>
-                <td>30</td>
-                <td>2008/12/19</td>
-                <td>$90,560</td>
-            </tr>
-            <tr>
-                <td>Charde Marshall</td>
-                <td>Regional Director</td>
-                <td>San Francisco</td>
-                <td>36</td>
-                <td>2008/10/16</td>
-                <td>$470,600</td>
-            </tr>
-            <tr>
-                <td>Haley Kennedy</td>
-                <td>Senior Marketing Designer</td>
-                <td>London</td>
-                <td>43</td>
-                <td>2012/12/18</td>
-                <td>$313,500</td>
-            </tr>
-            <tr>
-                <td>Tatyana Fitzpatrick</td>
-                <td>Regional Director</td>
-                <td>London</td>
-                <td>19</td>
-                <td>2010/03/17</td>
-                <td>$385,750</td>
-            </tr>
-            <tr>
-                <td>Michael Silva</td>
-                <td>Marketing Designer</td>
-                <td>London</td>
-                <td>66</td>
-                <td>2012/11/27</td>
-                <td>$198,500</td>
-            </tr>
-            <tr>
-                <td>Paul Byrd</td>
-                <td>Chief Financial Officer (CFO)</td>
-                <td>New York</td>
-                <td>64</td>
-                <td>2010/06/09</td>
-                <td>$725,000</td>
-            </tr>
-            <tr>
-                <td>Gloria Little</td>
-                <td>Systems Administrator</td>
-                <td>New York</td>
-                <td>59</td>
-                <td>2009/04/10</td>
-                <td>$237,500</td>
-            </tr>
-            <tr>
-                <td>Bradley Greer</td>
-                <td>Software Engineer</td>
-                <td>London</td>
-                <td>41</td>
-                <td>2012/10/13</td>
-                <td>$132,000</td>
-            </tr>
         </tbody>
     </table>
 	</div>
   </div>
 </div>
+<button class ="btn btn-success btn-xs" id="addRow"></button>
 </body>
+</html>
