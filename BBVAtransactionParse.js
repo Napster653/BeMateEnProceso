@@ -1,3 +1,4 @@
+
 function getProductsBittrex() {
   var request = new XMLHttpRequest;
   var key;
@@ -67,32 +68,20 @@ function getTransaction() {
 
   //	var existe = exists(dataTable, );
   var codigo_registro = res.substring(0, 2); //2
-  console.log(codigo_registro);
   var clave_entidad = res.substring(2, 6); //4
-  console.log(clave_entidad);
   var clave_oficina = res.substring(6, 10); //4
-  console.log(clave_oficina);
   var accouunt_number = res.substring(10, 20); //10
-  console.log(accouunt_number);
   var init_date = res.substring(20, 26); //6
-  console.log(init_date);
   var year = init_date.substring(0, 2);
   var month = init_date.substring(2, 4);
   var day = init_date.substring(4, 6);
   var op_date = new Date(year, month - 1, day);
-  console.log(op_date);
   var end_date = res.substring(26, 32); //6
-  console.log(end_date);
   var debe_haber = res.substring(32, 33); //1, bool
-  console.log(debe_haber);
   var balance = res.substring(33, 47); //14
-  console.log(balance);
   var clave_divisa = res.substring(47, 50); //3
-  console.log(clave_divisa);
   var inf_modalidad = res.substring(50, 51); //1
-  console.log(inf_modalidad);
   var nombre_abreviado = res.substring(51, 77); //26
-  console.log(nombre_abreviado);
   var index = 81;
   var ccooddee = 0;
   var transaction_count = 0;
@@ -101,12 +90,10 @@ function getTransaction() {
       transaction_count++;
     }
     ccooddee = res.substring(index, index + 2);
-    console.log(ccooddee);
     index = 81 + index;
   }
   index -= 81;
   var final_registro = res.substring(index);
-  console.log(transaction_count);
   var transacciones = [];
   for (var i = 0; i < transaction_count; i++) {
     // elements in each transaction
@@ -307,9 +294,7 @@ function getTransaction() {
       next_register = res.substring(index, index + 2);
     }
   }
-  //if 33 y listo
-  console.log(transacciones[6][8]);
-  console.log(transacciones[6][11]);
+
   //fecha sin poner bien
 
   //proceso para poner la fecha con el formato adecuado
@@ -317,9 +302,7 @@ function getTransaction() {
   var mes = transacciones[2][3].substring(2, 4) + "/";
   var dia = transacciones[2][3].substring(4, 6);
   var formatFecha = ano.concat(mes, dia);
-  console.log(formatFecha);
   var fin_codigo = final_registro.substring(0, 2);
-  console.log(fin_codigo);
   var fin_entidad = final_registro.substring(2, 6);
   var fin_oficina = final_registro.substring(6, 10);
   var fin_numero_cuenta = final_registro.substring(10, 20);
@@ -328,7 +311,6 @@ function getTransaction() {
   var fin_numero_apuntes_haber = final_registro.substring(39, 44);
   var fin_total_importe_haber = final_registro.substring(44, 58);
   var fin_codigo_saldo = final_registro.substring(58, 59);
-  console.log(fin_codigo_saldo);
   var fin_importe_saldo = final_registro.substring(59, 73);
   var fin_clave_divisa = final_registro.substring(73, 76);
   //		}
@@ -350,6 +332,13 @@ function getTransaction() {
     cuerpoTabla.innerHTML = cuerpoTabla.innerHTML + HTMLFila
   }
 }
+
+
+
+function hfunction(){
+  var t=setInterval($.myfunction, 5000);
+
+};
 // window.onload = () => {
 // let cuerpoTabla = document.getElementById('cuerpo')
 // for (let fila of transacciones) {

@@ -9,6 +9,9 @@ text-align:left;
 	height:40px;
 	color: white;
   margin-bottom:10px;
+
+
+  /* display: none; */
 }
 
 div.material-table .dataTables_filter input {
@@ -175,10 +178,10 @@ div.material-table table tr td {
 	display:none;
 }
 .dataTables_paginate{
-	/* display:none; */
+	display:none;
 }
 .dataTables_length{
-	/* display: none; */
+/* <!--	display: none;--> */
 }
 .dataTables_filter{
 	/*display: none;*/
